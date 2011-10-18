@@ -81,4 +81,21 @@ public class collection{
 		return res;
 	}
 
+	public ArrayList<DVD> searchTitle(String query)
+	{
+		ArrayList<DVD> res = new ArrayList();
+		ArrayList<DVD> disks = getMovies();
+		
+		for(DVD mov : disks)
+		{
+			if(mov.getTitle().toLowerCase().indexOf(query) > -1)
+			{
+				res.add(mov);
+			}
+		}
+
+		return res;
+	}
+	
+
 }

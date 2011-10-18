@@ -11,7 +11,7 @@ public class main{
 		int choice = -1;
 		while(choice != 0)
 		{
-			System.out.println("Pick a number to start:\n1) View all titles.\n2) add a movie.\n3) pick a random movie.\n4) Search for movie. \n0) Quit.");
+			System.out.println("Pick a number to start:\n1) View all titles.\n2) add a movie.\n3) pick a random movie.\n4) Search for movie.\n5) view details of a movie \n0) Quit.");
 			Scanner k = new Scanner(System.in);
 			String temp = k.next();
 			try{
@@ -34,7 +34,9 @@ public class main{
 				case 4:
 					search(c);
 				break;
-
+				case 5:
+					viewDetails(c);
+				break;	
 
 
 				case 0:
@@ -88,6 +90,25 @@ public class main{
 		}
 		System.out.println("\n");
 	}
+
+	public static void viewDetails(collection c)
+	{
+		Scanner k = new Scanner(System.in);
+		System.out.println("Please enter a movie title: ");
+		String query = k.nextLine().toLowerCase();
+		ArrayList<DVD> res = c.searchTitle(query);
+		try{
+			DVD mov = res.get(0);
+			System.out.println("\n"+mov.getTitle() + ", "+ mov.getGenre() + ", released " + mov.getDate());
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println("No movie was found");
+		}
+		System.out.println("\n");
+	}
+
 
 
 }
