@@ -11,7 +11,7 @@ public class main{
 		int choice = -1;
 		while(choice != 0)
 		{
-			System.out.println("Pick a number to start:\n1) View all titles\n2) add a movie\n3) pick a random movie.\n 0) Quit.");
+			System.out.println("Pick a number to start:\n1) View all titles.\n2) add a movie.\n3) pick a random movie.\n4) Search for movie. \n0) Quit.");
 			Scanner k = new Scanner(System.in);
 			String temp = k.next();
 			try{
@@ -31,6 +31,12 @@ public class main{
 				case 3:
 					randomMovie(c);
 				break;
+				case 4:
+					search(c);
+				break;
+
+
+
 				case 0:
 				System.out.println("Goodbye");
 				break;
@@ -68,6 +74,19 @@ public class main{
 		System.out.println("Please enter a genre");
 		String genre = k.nextLine();
 		c.addMovie(title, date, genre);
+	}
+	public static void search(collection c)
+	{
+		Scanner k = new Scanner(System.in);
+		System.out.println("Please enter a search query: ");
+		String query = k.nextLine().toLowerCase();
+		ArrayList<DVD> res = c.search(query);
+		System.out.println("\nYour search returned the following results: \n==============================");
+		for(DVD d : res)
+		{
+			System.out.println(d.getTitle());
+		}
+		System.out.println("\n");
 	}
 
 

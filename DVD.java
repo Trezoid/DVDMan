@@ -24,5 +24,10 @@ public class DVD{
 	{
 		return genre;
 	}
+	public String toString()
+	{
+		String out = title + ", " + date + ", " + genre;
+		return out;
+	}
 }
 		 

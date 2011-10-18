@@ -64,4 +64,21 @@ public class collection{
 		}
 		return 1;
 	}
+
+	public ArrayList<DVD> search(String query)
+	{
+		ArrayList<DVD> res = new ArrayList();
+		ArrayList<DVD> disks = getMovies();
+		
+		for(DVD mov : disks)
+		{
+			if(mov.toString().toLowerCase().indexOf(query) > -1)
+			{
+				res.add(mov);
+			}
+		}
+
+		return res;
+	}
+
 }
