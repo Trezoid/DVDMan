@@ -71,11 +71,7 @@ public class main{
 		Scanner k = new Scanner(System.in);
 		System.out.println("Please enter a title");
 		String title = k.nextLine();
-		System.out.println("Please enter when it was released");
-		String date = k.nextLine();
-		System.out.println("Please enter a genre");
-		String genre = k.nextLine();
-		c.addMovie(title, date, genre);
+		c.addMovie(title);
 	}
 	public static void search(collection c)
 	{
@@ -99,8 +95,7 @@ public class main{
 		ArrayList<DVD> res = c.searchTitle(query);
 		try{
 			DVD mov = res.get(0);
-			System.out.println("\n"+mov.getTitle() + ", "+ mov.getGenre() + ", released " + mov.getDate());
-		
+			System.out.println(mov.toString());	
 		}
 		catch(Exception e)
 		{
