@@ -23,29 +23,49 @@ public class tmdb{
 		for(int i = 1; i < movies.length; i++)
 		{
 			String id = movies[i].split("<id>")[1].split("</id>")[0];
-			movURL = base+"Movie.getInfo/"+lang+"/"+key+"/"+id;
-			c = new urlConn(movURL);
-			String details = c.getContent();
-			String title = details.split("<name>")[1].split("</name>")[0];
-			String date = details.split("<released>")[1].split("</released>")[0];
-			String genres = details.split("<categories>")[1].split("</categories>")[0];
-			String[] genre = genres.split("name=\"");
-
-			String finalGenre = "";
-
-			for(int x = 1; x < genre.length; x++)
-			{
-				genre[x] = genre[x].split("\"")[0];
-				finalGenre += genre[x] + ", ";
-			}
-
-			String overview = details.split("<overview>")[1].split("</overview>")[0];
-
-			DVD disk = new DVD(id+"#"+title+"#"+date+"#"+finalGenre+"#"+overview);
+			
+			try{
+			DVD disk = getInfo(id);
 			results.add(disk);
+			}
+			catch(Exception e){System.out.println("An unknown error occured");}
 		}
 
 		return results;
 
+	}
+
+	public DVD getInfo(String mID)
+	{
+		DVD res;
+		String movURL = base+"Movie.getInfo/"+lang+"/"+key+"/"+mID;
+		urlConn c = new urlConn(movURL);
+		String details = c.getContent().replaceAll("&#8217;", "'").replaceAll("#", "");
+		String title = details.split("<name>")[1].split("</name>")[0];
+		String date = details.split("<released>")[1].split("</released>")[0];
+		String genres = details.split("<categories>")[1].split("</categories>")[0];
+		String[] genre = genres.split("name=\"");
+
+		String finalGenre = "";
+
+		for(int x = 1; x < genre.length; x++)
+		{
+			genre[x] = genre[x].split("\"")[0];
+			finalGenre += genre[x] + ", ";
+		}
+
+		if(finalGenre.length() < 1)
+		{
+			finalGenre = "No genre found";
+		}
+
+		String overview = details.split("<overview>")[1].split("</overview>")[0];
+		
+		if(overview.length() < 1)
+		{
+			overview = "no overview found.";
+		}
+		res = new DVD(mID+"#"+title+"#"+date+"#"+finalGenre+"#"+overview);
+		return res;
 	}
 }

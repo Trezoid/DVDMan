@@ -1,3 +1,4 @@
+import java.util.*;
 public class DVD{
 	private String title;
 	private String date;
@@ -49,6 +50,15 @@ public class DVD{
 	{
 		String out =id +"#"+ title + "#" + date + "#" + genre + "#" + overview + "\n";
 		return out;
+	}
+}
+class CustomComparator implements Comparator<DVD> {
+	@Override
+	public int compare(DVD o1, DVD o2) 
+	{
+		String title1 = o1.getTitle().toLowerCase().replaceAll("the ", "");
+		String title2 = o2.getTitle().toLowerCase().replaceAll("the ", "");
+		return title1.compareTo(title2);
 	}
 }
 		 
