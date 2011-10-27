@@ -45,8 +45,7 @@ public class collection{
 
 		catch(Exception e)
 		{
-			System.out.println("An error occured: " + e.getCause() + ", " + e.getMessage());
-			e.printStackTrace();
+			return null;
 		}
 
 		return disks;
@@ -93,8 +92,9 @@ public class collection{
 				}
 				catch(Exception e)
 				{
-					System.out.println("That wasn't valid input");
+					return 0;
 				}
+
 			}
 			finalMov = movies.get(choice - 1);
 		}
@@ -112,7 +112,6 @@ public class collection{
 		}
 		catch(Exception e)
 		{
-			System.out.println("An error occured: " + e.getCause());
 			return 0;
 		}
 		sortCollection();
@@ -155,7 +154,6 @@ public class collection{
 		}
 		catch(Exception e)
 		{
-			System.out.println("An error occured: " + e.getCause());
 			return 0;
 		}
 		return 1;
@@ -181,7 +179,6 @@ public class collection{
 		}
 		catch(Exception e)
 		{
-			System.out.println("An error occured: " + e.getCause());
 			return 0;
 		}
 		return 1;
