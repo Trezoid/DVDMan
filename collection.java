@@ -52,50 +52,23 @@ public class collection{
 	}
 	public int addMovie(String title)
 	{
+		errors er = new errors();
 		ArrayList<DVD> currentMovies = this.searchTitle(title);
 		if(currentMovies.size() > 0)
 		{
-			System.out.println("Some movies with a similar name already exist in your collection. They are:");
-			for(DVD curr : currentMovies)
-			{
-				System.out.println(curr.getTitle());
-			}
-			System.out.println("\nWould you like to continue adding this movie anyway? (y/n)");
-			Scanner s = new Scanner(System.in);
-			String yN = s.nextLine();
-			if(yN.toLowerCase().indexOf("n") > -1)
+			int cont = er.foundOthers(currentMovies);
+			if(cont == 0)
 			{
 				return 0;
 			}
-		}
-
+		}	
+		
 		tmdb t = new tmdb();
 		ArrayList<DVD> movies = t.search(title);
 		DVD finalMov;
 		if(movies.size() > 1)
 		{
-
-			System.out.println(movies.size() + " movies for found with that title. Which one would you like to add?\n========================");
-			int i = 1;
-			for(DVD disk : movies)
-			{
-				System.out.println(i + ": " + disk.toString());
-				i++;
-			}
-			System.out.println("Enter a number to add that movie to your collection: ");
-			Scanner s = new Scanner(System.in);
-			int choice = -1;
-			while (choice < 0)
-			{
-				try{
-					choice = Integer.parseInt(s.nextLine());
-				}
-				catch(Exception e)
-				{
-					return 0;
-				}
-
-			}
+			int choice = er.addError(movies);
 			finalMov = movies.get(choice - 1);
 		}
 		else
@@ -118,6 +91,8 @@ public class collection{
 
 		return 1;
 	}
+
+
 
 	public int updateMovie(String title)
 	{

@@ -94,9 +94,9 @@ public class main{
 		Scanner k = new Scanner(System.in);
 		System.out.println("Please enter a title");
 		String title = k.nextLine();
+	
 		c.addMovie(title);
 	}
-
 
 	public static void search(collection c)
 	{
