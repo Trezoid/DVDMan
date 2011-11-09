@@ -111,6 +111,7 @@ public class collection{
 		tmdb t = new tmdb();
 		String id = this.searchTitle(title).get(0).id();
 		DVD result = t.getInfo(id);
+		
 		allDisks.set(updatePost, result);
 
 		String fileDump = "";

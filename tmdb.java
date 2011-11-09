@@ -65,7 +65,7 @@ public class tmdb{
 		{
 			overview = "no overview found.";
 		}
-		res = new DVD(mID+"#"+title+"#"+date+"#"+finalGenre+"#"+overview);
+		res = new DVD(mID+"#"+title+"#"+date+"#"+finalGenre+"#"+overview + "# ");
 		return res;
 	}
 }

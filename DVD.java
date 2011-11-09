@@ -5,6 +5,7 @@ public class DVD{
 	private String genre;
 	private String overview;
 	private String id;
+	private String group;
 	public DVD(String movie)
 	{
 		String[] Col = movie.split("#");
@@ -13,6 +14,7 @@ public class DVD{
 		this.date = Col[2];
 		this.genre = Col[3];
 		this.overview = Col[4];
+		this.group = Col[5];
 	}
 
 	public String id()
@@ -39,6 +41,16 @@ public class DVD{
 	{
 		return overview;
 	}
+
+	public String getGroups()
+	{
+		return group;
+	}
+
+	public void writeGroup(String group)
+	{
+		this.group += ", " + group;
+	}
 	
 	public String toString()
 	{
@@ -48,7 +60,7 @@ public class DVD{
 
 	public String toPrintString()
 	{
-		String out =id +"#"+ title + "#" + date + "#" + genre + "#" + overview + "\n";
+		String out =id +"#"+ title + "#" + date + "#" + genre + "#" + overview + "#" + group + "\n";
 		return out;
 	}
 }
