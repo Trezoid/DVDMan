@@ -111,7 +111,7 @@ public class main{
 
 	public static void groupOptions(collection c)
 	{
-		int choice = 0;
+		int choice = -1;
 		while(choice != 0)
 		{
 			System.out.println("Pick a number to manage groups:\n1) Add group.\n2) Add a movie to a group\n3) view a group\n0) back");
@@ -295,7 +295,6 @@ public class main{
 		{
 			System.out.println(gr);
 		}
-		System.out.println("\n");
 		String group = k.nextLine().toLowerCase();
 		g.addToGroup(mov, group);
 	}
@@ -305,14 +304,14 @@ public class main{
 	{
 		group g = new group();
 		Scanner k = new Scanner(System.in);
-		System.out.println("Please enter a group to add this movie too. You currently have the following groups: ");
+		System.out.println("You currently have the following groups: ");
 		ArrayList<String> groups = g.getGroups();
 
 		for(String gr : groups)
 		{
 			System.out.println(gr);
 		}
-		System.out.println("\n");
+		
 		String group = k.nextLine().toLowerCase();
 
 		ArrayList<DVD> dvdGroup = g.searchGroup(group);
