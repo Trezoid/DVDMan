@@ -41,7 +41,7 @@ public class main{
 				break;
 			}
 			}
-			catch(Exception e){}
+			catch(Exception e){System.out.println(e.getMessage());}
 		}
 	}
 
@@ -147,7 +147,7 @@ public class main{
 		int choice = -1;
 		while(choice != 0)
 		{
-			System.out.println("Pick a number to manage collection:\n1) add a movie.\n2) search collection\n3) View movie details.\n0) Quit.");
+			System.out.println("Pick a number to manage collection:\n1) add a movie.\n2) search collection\n3) View movie details.\n0) Back.");
 			Scanner k = new Scanner(System.in);
 			String temp = k.next();
 			try{

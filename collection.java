@@ -45,6 +45,7 @@ public class collection{
 
 		catch(Exception e)
 		{
+			System.out.println("Length of items: " + disks.size() + ", last movie found: " + disks.get(disks.size() - 1));
 			return null;
 		}
 
